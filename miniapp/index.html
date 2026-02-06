@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <!-- # 💬 <head> = "настройки страницы"
+       Тут мы задаём кодировку, адаптацию под мобилку, заголовок вкладки,
+       и подключаем CSS (визуалку). -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Miniapp Lab · Учебная версия</title>
+
+  <!-- # 💬 CSS подключается так:
+       браузер читает styles.css и применяет стили ко всем элементам. -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- # 💬 <body> = то, что реально видит человек на экране -->
+
+  <!-- # 💬 wrap = ограничивает ширину, делает красивый центр -->
+  <div class="wrap">
+
+    <!-- # 💬 header = верхняя часть (как "шапка" интерфейса)
+         Аналогия с ботом: это как "главное меню / заголовок" -->
+    <header class="top">
+
+      <!-- # 💬 Блок "бренд" слева: логотип и подпись -->
+      <div class="brand">
+        <div class="logo">M</div>
+
+        <div>
+          <div class="brand__title">Miniapp Lab</div>
+          <div class="brand__sub">обучение: HTML + CSS + JS</div>
+        </div>
+      </div>
+
+      <!-- # 💬 Справа маленькие плашки:
+           ENV = где запущено (Browser / Telegram)
+           TIME = текущее время
+           Эти элементы мы будем менять из JS. -->
+      <div class="badges">
+        <span class="pill" id="envPill">ENV: ...</span>
+        <span class="pill" id="timePill">TIME: ...</span>
+      </div>
+    </header>
+
+    <!-- # 💬 main = главная часть страницы -->
+    <main class="card">
+
+      <!-- # 💬 Эти элементы мы будем менять из JS:
+           title / subtitle = тексты, которые обновляются при клике -->
+      <h1 class="h1" id="title">Привет, Dani 👋</h1>
+      <p class="muted" id="subtitle">
+        Это обычная веб-страница. Нажми кнопку и смотри, как меняется UI.
+      </p>
+
+      <!-- # 💬 controls = зона управления: кнопки.
+           Аналогия с ботом: InlineKeyboard, только здесь это обычные HTML кнопки. -->
+      <section class="controls">
+        <button class="btn btn--ok" id="btnClick">Нажать</button>
+        <button class="btn btn--alt" id="btnReset">Сброс</button>
+      </section>
+
+      <!-- # 💬 grid = 2 колонки: слева "состояние", справа "логи"
+           Это учебная штука: показываем, что JS хранит state и обновляет экран -->
+      <section class="grid">
+
+        <!-- # 💬 Панель 1: состояние -->
+        <div class="panel">
+          <div class="panel__title">Состояние (state)</div>
+
+          <!-- # 💬 Тут 2 поля:
+               clicks = сколько раз нажали кнопку
+               mode = browser/telegram
+               Их значения JS будет вставлять в элементы по id -->
+          <div class="panel__body">
+            <div class="kv">
+              <div class="kv__k">clicks</div>
+              <div class="kv__v" id="clicksValue">0</div>
+            </div>
+
+            <div class="kv">
+              <div class="kv__k">mode</div>
+              <div class="kv__v" id="modeValue">browser</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- # 💬 Панель 2: логи -->
+        <div class="panel">
+          <div class="panel__title">Логи (как консоль на экране)</div>
+
+          <!-- # 💬 <pre> сохраняет переносы строк.
+               Мы будем дописывать сюда строки из JS, как в логах сервера. -->
+          <pre class="log" id="log">Готово. Страница загрузилась.</pre>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- # 💬 footer = низ, маленькая подсказка -->
+    <footer class="footer muted">
+      Дальше: сделаем "экраны" и переключение как мини-FSM.
+    </footer>
+
+  </div>
+
+  <!-- # 💬 Подключаем JS в самом конце body — это удобно:
+       HTML уже загрузился, и JS спокойно находит элементы по id. -->
+  <script src="./app.js"></script>
+</body>
+</html>
