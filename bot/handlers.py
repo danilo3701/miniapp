@@ -4,7 +4,7 @@ from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup, WebAppIn
 router = Router()
 
 # 💬 Это твой сайт. Его откроет Telegram внутри WebView
-MINIAPP_URL = "https://danilo3701.github.io/miniapp/"
+MINIAPP_URL = "https://danilo3701.github.io/miniapp/web/"
 
 @router.message(F.text == "/start")
 async def start(message: Message):
@@ -25,3 +25,4 @@ async def webapp_data(message: Message):
         "✅ Получил данные из мини-аппы:\n"
         f"<code>{data}</code>"
     )
+
